@@ -15,6 +15,9 @@ function create() {
   show.value = false; opp.value = ''
   router.push('/live/' + id)
 }
+function removeMatch(m) {
+  if (confirm(`Supprimer le match contre ${m.opponent} ?`)) s.deleteMatch(m.id)
+}
 </script>
 
 <template>
@@ -28,6 +31,7 @@ function create() {
           <strong>{{ sb(m).me }}–{{ sb(m).opp }}</strong>
           <span v-if="m.status === 'live'" class="badge live">LIVE</span>
           <span v-else class="badge" :class="m.result">{{ m.result === 'win' ? 'V' : 'D' }}</span>
+          <button class="trash" @click.stop.prevent="removeMatch(m)" aria-label="Supprimer le match" title="Supprimer">🗑️</button>
         </div>
       </router-link>
       <div v-if="!list.length" class="empty">Aucun match. Clique « Nouveau » pour commencer.</div>
@@ -49,6 +53,8 @@ function create() {
 </template>
 
 <style scoped>
+.trash { font-size: 1rem; padding: 4px 6px; opacity: .5; line-height: 1; border-radius: 8px; }
+.trash:active { opacity: 1; background: rgba(229, 72, 77, .12); }
 .sheet-bg { position: fixed; inset: 0; z-index: 100; background: rgba(20, 24, 26, .4); display: flex; align-items: flex-end; }
 .sheet { background: #fff; width: 100%; border-radius: 18px 18px 0 0; padding: 20px 18px calc(20px + env(safe-area-inset-bottom)); animation: up .2s ease; }
 @keyframes up { from { transform: translateY(40px); opacity: .6; } to { transform: none; opacity: 1; } }

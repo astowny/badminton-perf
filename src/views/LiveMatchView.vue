@@ -16,6 +16,9 @@ function tag(field, val) {
   if (!p) return
   s.tagLastPoint(route.params.id, { [field]: p[field] === val ? null : val })
 }
+function remove() {
+  if (confirm('Supprimer définitivement ce match ?')) { s.deleteMatch(route.params.id); router.push('/matchs') }
+}
 </script>
 
 <template>
@@ -66,6 +69,8 @@ function tag(field, val) {
         <button class="btn" style="margin-top:12px" @click="router.push('/stats')">Voir mes stats</button>
       </div>
     </template>
+
+    <button class="btn btn-red btn-sm" style="margin-top:22px;width:100%" @click="remove">Supprimer ce match</button>
   </div>
   <div v-else class="empty">Match introuvable.</div>
 </template>

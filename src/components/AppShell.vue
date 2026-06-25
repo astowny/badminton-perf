@@ -20,11 +20,23 @@ const ICONS = {
   <div class="shell">
     <header class="topbar">
       <div class="brand"><span class="logo">🏸</span> BadmintonPerf</div>
+
+      <!-- Desktop : onglets dans la barre du haut -->
+      <nav class="topnav">
+        <router-link v-for="t in TABS" :key="t.to" :to="t.to" class="tn-item">
+          <svg viewBox="0 0 24 24" class="ic" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" v-html="ICONS[t.icon]" />
+          <span>{{ t.label }}</span>
+        </router-link>
+      </nav>
+
+      <!-- Mobile : titre de la page -->
       <div class="topbar-title">{{ route.meta.title }}</div>
     </header>
 
     <main class="content"><slot /></main>
 
+    <!-- Mobile : navigation en bas -->
     <nav class="bottomnav">
       <router-link v-for="t in TABS" :key="t.to" :to="t.to" class="bn-item">
         <svg viewBox="0 0 24 24" class="ic" fill="none" stroke="currentColor" stroke-width="2"
@@ -46,15 +58,34 @@ const ICONS = {
 .logo { font-size: 1.15rem; }
 .topbar-title { font-size: 0.85rem; color: #b9e6cf; font-weight: 600; }
 .content { flex: 1; padding: 16px 16px calc(86px + env(safe-area-inset-bottom)); max-width: 720px; width: 100%; margin: 0 auto; }
+
+/* Nav haut (desktop) — masquée sur mobile */
+.topnav { display: none; }
+.tn-item {
+  display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 10px;
+  color: #b9e6cf; font-weight: 600; font-size: 0.9rem; transition: background 0.15s, color 0.15s;
+}
+.tn-item:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+.tn-item.router-link-active { color: #fff; background: var(--green-600); }
+.tn-item .ic { width: 18px; height: 18px; }
+
+/* Nav bas (mobile) */
 .bottomnav {
   display: flex; position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
   justify-content: space-around; padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
   background: #fff; border-top: 1px solid var(--line);
 }
-.bn-item {
-  display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1;
-  color: var(--muted); font-size: 0.66rem; font-weight: 600; padding: 4px;
-}
+.bn-item { display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; color: var(--muted); font-size: 0.66rem; font-weight: 600; padding: 4px; }
 .bn-item .ic { width: 23px; height: 23px; }
 .bn-item.router-link-active { color: var(--green-600); }
+
+/* ── Desktop / PC ───────────────────────────────────────── */
+@media (min-width: 860px) {
+  .topbar { padding: 14px 28px; }
+  .brand { font-size: 1.15rem; }
+  .topnav { display: flex; gap: 6px; }
+  .topbar-title { display: none; }
+  .bottomnav { display: none; }
+  .content { max-width: 940px; padding: 28px 28px 40px; }
+}
 </style>
