@@ -1,0 +1,6 @@
+{
+  "appId": "com.astowny.badmintonperf",
+  "appName": "BadmintonPerf",
+  "webDir": "dist",
+  "server": { "androidScheme": "https" }
+}
