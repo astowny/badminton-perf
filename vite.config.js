@@ -19,8 +19,8 @@ export default defineConfig(({ mode }) => {
           short_name: 'BadmintonPerf',
           description: "Suivi et analyse des performances d'un joueur de badminton.",
           lang: 'fr',
-          theme_color: '#0b3d2e',
-          background_color: '#0b3d2e',
+          theme_color: '#0a3a29',
+          background_color: '#0a3a29',
           display: 'standalone',
           orientation: 'portrait',
           icons: [

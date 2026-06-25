@@ -76,16 +76,24 @@ function remove() {
 </template>
 
 <style scoped>
-.scorecard { background: var(--green-900); color: #fff; border: none; }
-.sets { display: flex; align-items: center; justify-content: space-around; margin-top: 8px; }
+.scorecard {
+  background: var(--grad-deep); color: #fff; border: none; border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg); position: relative; overflow: hidden; padding: 22px 18px;
+}
+.scorecard::before {
+  content: ""; position: absolute; top: -45%; right: -18%; width: 250px; height: 250px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 242, 61, 0.22), transparent 70%); pointer-events: none;
+}
+.scorecard > * { position: relative; }
+.sets { display: flex; align-items: center; justify-content: space-around; margin-top: 14px; }
 .side { text-align: center; flex: 1; }
-.name { font-size: .85rem; color: #b9e6cf; font-weight: 600; }
-.score { font-size: 3.4rem; font-weight: 800; line-height: 1.05; }
-.setswon { font-size: .72rem; color: #8fcfb0; }
-.vs { font-size: 1.5rem; color: #4f8a72; }
-.setline { display: flex; gap: 6px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
-.setpill { background: rgba(255, 255, 255, .12); padding: 3px 9px; border-radius: 999px; font-size: .74rem; font-weight: 700; }
-.bigpt { padding: 22px 10px; font-size: 1.02rem; line-height: 1.2; }
-.bigpt.me { background: var(--green-600); }
-.bigpt.opp { background: #475569; }
+.name { font-size: .76rem; color: #9fe6c6; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+.score { font-family: var(--font-display); font-size: 3.9rem; font-weight: 700; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.setswon { font-size: .7rem; color: #7fc6a4; margin-top: 6px; font-weight: 600; }
+.vs { font-size: 1.4rem; color: #4f8a72; font-weight: 700; }
+.setline { display: flex; gap: 7px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+.setpill { background: rgba(255, 255, 255, .13); padding: 4px 11px; border-radius: 999px; font-size: .74rem; font-weight: 700; }
+.bigpt { padding: 26px 10px; font-size: 1.05rem; line-height: 1.25; border-radius: 16px; }
+.bigpt.me { background: var(--grad-go); }
+.bigpt.opp { background: linear-gradient(135deg, #4b5563, #334155); box-shadow: 0 8px 20px rgba(51, 65, 85, 0.28); }
 </style>

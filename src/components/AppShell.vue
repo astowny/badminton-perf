@@ -51,11 +51,12 @@ const ICONS = {
 .shell { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
 .topbar {
   display: flex; align-items: center; justify-content: space-between;
-  padding: calc(env(safe-area-inset-top) + 12px) 18px 12px;
-  background: var(--green-900); color: #fff; position: sticky; top: 0; z-index: 10;
+  padding: calc(env(safe-area-inset-top) + 13px) 18px 13px;
+  background: var(--grad-deep); color: #fff; position: sticky; top: 0; z-index: 10;
+  box-shadow: 0 4px 22px rgba(10, 58, 41, 0.22);
 }
-.brand { font-weight: 800; letter-spacing: -0.01em; display: flex; align-items: center; gap: 7px; }
-.logo { font-size: 1.15rem; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; letter-spacing: -0.02em; display: flex; align-items: center; gap: 7px; }
+.logo { font-size: 1.2rem; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); }
 .topbar-title { font-size: 0.85rem; color: #b9e6cf; font-weight: 600; }
 .content { flex: 1; padding: 16px 16px calc(86px + env(safe-area-inset-bottom)); max-width: 720px; width: 100%; margin: 0 auto; }
 
@@ -65,8 +66,8 @@ const ICONS = {
   display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 10px;
   color: #b9e6cf; font-weight: 600; font-size: 0.9rem; transition: background 0.15s, color 0.15s;
 }
-.tn-item:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
-.tn-item.router-link-active { color: #fff; background: var(--green-600); }
+.tn-item:hover { color: #fff; background: rgba(255, 255, 255, 0.1); }
+.tn-item.router-link-active { color: var(--green-950); background: var(--lime); box-shadow: 0 4px 14px rgba(184, 242, 61, 0.3); }
 .tn-item .ic { width: 18px; height: 18px; }
 
 /* Nav bas (mobile) */
